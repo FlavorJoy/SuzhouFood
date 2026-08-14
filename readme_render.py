@@ -3,7 +3,7 @@
 """
 readme_render.py
 读取 food-original.csv 并生成 README.md（覆盖写入）。
-使用HTML表格防止被压缩。
+优化版：拆分表格 + 换行处理，适配GitHub显示。
 """
 
 import csv
@@ -44,6 +44,13 @@ def is_example_row(row):
     return False
 
 
+def format_hours(hours):
+    """格式化营业时间，用<br>替代分号换行"""
+    if not hours:
+        return ""
+    return hours.strip().replace(";", "<br>")
+
+
 if not os.path.exists(CSV_PATH):
     print(f"ERROR: {CSV_PATH} not found.", file=sys.stderr)
     sys.exit(1)
@@ -65,34 +72,16 @@ lines.append("> 📋 本文件由 `readme_render.py` 根据 `food-original.csv` 
 lines.append("> ✏️ 如需添加或修改餐厅，请编辑 `food-original.csv` 并提交 Pull Request\n\n")
 lines.append(f"📊 共收录 **{len(rows)}** 家餐厅 ｜ 🕒 更新时间：{datetime.datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S')} UTC\n\n")
 
-# HTML 表格
-lines.append("""
-<div style="overflow-x: auto;">
-
-<table>
-  <thead>
-    <tr>
-      <th style="min-width: 120px; text-align: left;">名称</th>
-      <th style="min-width: 80px; text-align: left;">菜系</th>
-      <th style="min-width: 80px; text-align: center;">人均</th>
-      <th style="min-width: 130px; text-align: center;">推荐指数</th>
-      <th style="min-width: 100px; text-align: left;">地址/链接</th>
-      <th style="min-width: 180px; text-align: left;">营业时间</th>
-      <th style="min-width: 120px; text-align: left;">联系方式</th>
-      <th style="min-width: 70px; text-align: center;">预约</th>
-      <th style="min-width: 80px; text-align: center;">排队</th>
-      <th style="min-width: 80px; text-align: left;">标签</th>
-      <th style="min-width: 150px; text-align: left;">备注</th>
-    </tr>
-  </thead>
-  <tbody>
-""")
+# ========== 核心表格（精简为7列，减少横向压缩） ==========
+lines.append("## 📋 餐厅列表\n\n")
+lines.append("| 名称 | 菜系 | 人均 | 推荐指数 | 营业时间 | 预约 | 标签 |\n")
+lines.append("| :--- | :--- | :---: | :---: | :--- | :---: | :--- |\n")
 
 for r in rows:
     url = (r.get("url") or "").strip()
     name_raw = esc(r.get("name", ""))
     if url:
-        name = f'<a href="{url}">{name_raw}</a>'
+        name = f"[{name_raw}]({url})"
     else:
         name = name_raw
 
@@ -102,11 +91,40 @@ for r in rows:
 
     reservation = esc(r.get("reservation_needed", ""))
     if reservation.lower() in ("是", "yes", "需要"):
-        reservation = "✅ 是"
+        reservation = "✅"
     elif reservation:
-        reservation = "❌ 否"
+        reservation = "❌"
     else:
         reservation = "—"
+
+    hours = format_hours(esc(r.get("hours", "")))
+
+    lines.append(
+        "| {} | {} | {} | {} | {} | {} | {} |\n".format(
+            name,
+            esc(r.get("cuisine", "")),
+            esc(r.get("price", "")),
+            rating_display,
+            hours,
+            reservation,
+            esc(r.get("tags", "")),
+        )
+    )
+
+# ========== 详细信息（折叠块） ==========
+lines.append("\n<details>\n")
+lines.append("<summary>📖 点击展开详细信息（联系方式、地址、排队、备注）</summary>\n\n")
+
+lines.append("| 名称 | 联系方式 | 地址/链接 | 排队时长 | 备注 |\n")
+lines.append("| :--- | :--- | :--- | :---: | :--- |\n")
+
+for r in rows:
+    url = (r.get("url") or "").strip()
+    name_raw = esc(r.get("name", ""))
+    if url:
+        name = f"[{name_raw}]({url})"
+    else:
+        name = name_raw
 
     queue = esc(r.get("queue_time", ""))
     if queue:
@@ -114,39 +132,28 @@ for r in rows:
     else:
         queue = "—"
 
-    hours = esc(r.get("hours", ""))
-    hours = hours.replace(";", ";<br>")
+    lines.append(
+        "| {} | {} | {} | {} | {} |\n".format(
+            name,
+            esc(r.get("contact", "")),
+            url if url else "—",
+            queue,
+            esc(r.get("notes", "")),
+        )
+    )
 
-    lines.append(f"""    <tr>
-      <td style="min-width: 120px;">{name}</td>
-      <td style="min-width: 80px;">{esc(r.get('cuisine', ''))}</td>
-      <td style="min-width: 80px; text-align: center;">{esc(r.get('price', ''))}</td>
-      <td style="min-width: 130px; text-align: center; white-space: nowrap;">{rating_display}</td>
-      <td style="min-width: 100px;">{"🔗 <a href=\"" + url + "\">链接</a>" if url else ""}</td>
-      <td style="min-width: 180px;">{hours}</td>
-      <td style="min-width: 120px;">{esc(r.get('contact', ''))}</td>
-      <td style="min-width: 70px; text-align: center;">{reservation}</td>
-      <td style="min-width: 80px; text-align: center;">{queue}</td>
-      <td style="min-width: 80px;">{esc(r.get('tags', ''))}</td>
-      <td style="min-width: 150px;">{esc(r.get('notes', ''))}</td>
-    </tr>""")
+lines.append("\n</details>\n")
 
-lines.append("""
-  </tbody>
-</table>
-
-</div>
-""")
-
-# 图例
+# ========== 图例 ==========
 lines.append("\n---\n\n")
 lines.append("### 📌 图例说明\n\n")
 lines.append("| 图标 | 含义 |\n")
 lines.append("| :---: | --- |\n")
-lines.append("| ★ | 推荐指数（★越多越推荐） |\n")
-lines.append("| 🔗 | 地址/地图链接 |\n")
-lines.append("| ✅ ❌ | 是否需要预约 |\n")
+lines.append("| ★★★★★ | 推荐指数（★越多越推荐） |\n")
+lines.append("| ✅ | 需要预约 |\n")
+lines.append("| ❌ | 无需预约 |\n")
 lines.append("| ⏱ | 排队时长 |\n")
+lines.append("| 📖 | 点击展开详细信息 |\n")
 
 with open(OUT_PATH, "w", encoding="utf-8") as f:
     f.writelines(lines)
