@@ -3,7 +3,7 @@
 """
 readme_render.py
 读取 food-original.csv 并生成 README.md（覆盖写入）。
-美观版：使用HTML表格防止被压缩，保持11列。
+使用HTML表格防止被压缩。
 """
 
 import csv
@@ -65,7 +65,7 @@ lines.append("> 📋 本文件由 `readme_render.py` 根据 `food-original.csv` 
 lines.append("> ✏️ 如需添加或修改餐厅，请编辑 `food-original.csv` 并提交 Pull Request\n\n")
 lines.append(f"📊 共收录 **{len(rows)}** 家餐厅 ｜ 🕒 更新时间：{datetime.datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S')} UTC\n\n")
 
-# ⭐ 使用 HTML 表格，每列设置最小宽度防止被压缩
+# HTML 表格
 lines.append("""
 <div style="overflow-x: auto;">
 
@@ -105,17 +105,19 @@ for r in rows:
         reservation = "✅ 是"
     elif reservation:
         reservation = "❌ 否"
+    else:
+        reservation = "—"
 
     queue = esc(r.get("queue_time", ""))
-    if queue and queue != "":
+    if queue:
         queue = f"⏱ {queue}"
+    else:
+        queue = "—"
 
-    # 营业时间处理：保留换行，用 <br> 替代
     hours = esc(r.get("hours", ""))
     hours = hours.replace(";", ";<br>")
 
-    lines.append(f"""
-    <tr>
+    lines.append(f"""    <tr>
       <td style="min-width: 120px;">{name}</td>
       <td style="min-width: 80px;">{esc(r.get('cuisine', ''))}</td>
       <td style="min-width: 80px; text-align: center;">{esc(r.get('price', ''))}</td>
@@ -127,8 +129,7 @@ for r in rows:
       <td style="min-width: 80px; text-align: center;">{queue}</td>
       <td style="min-width: 80px;">{esc(r.get('tags', ''))}</td>
       <td style="min-width: 150px;">{esc(r.get('notes', ''))}</td>
-    </tr>
-""")
+    </tr>""")
 
 lines.append("""
   </tbody>
