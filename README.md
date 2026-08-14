@@ -1,11 +1,11 @@
-# SuzhouFood 苏州美食推荐
+# 苏州美食推荐（自动生成）
 
-记录一些必吃的苏州美食&amp;餐厅🍴
+本文件由 `readme_render.py` 根据 `food-original.csv` 自动生成。
 
-本 README 将由仓库根目录的 `readme_render.py` 脚本根据 `food-original.csv` 自动生成。请不要直接编辑此文件（除非你知道在做什么）。
+如果要添加/修改餐厅，请编辑 `food-original.csv` 并提交 PR。
 
-要添加餐厅，请编辑 `food-original.csv`，在文件末尾添加一行，字段顺序为：
+更新时间：2026-08-14 06:25:54 UTC
 
-name,cuisine,price,rating,url,hours,contact,reservation_needed,queue_time,tags,notes
-
-示例行已包含在 food-original.csv 中。合并 PR 后，CI（GitHub Actions）会在默认分支上运行并自动提交更新后的 README。
+| 名称 | 菜系 | 人均/价格区间 | 推荐指数 | 地址/链接 | 营业时间 | 联系方式 | 是否需预约 | 排队时长 | 标签 | 备注 |
+| --- | --- | --- | ---: | --- | --- | --- | --- | --- | --- | --- |
+| [示例餐厅](https://example.com) | 本地苏帮菜 | ¥50-100 | 4.5 | https://example.com | 周一-周日 11:00-21:00 | 0512-12345678 | 否 | 10-20分钟 | 平价小吃 | 示例条目：这是一个用来展示 CSV 格式的示例行。 |
