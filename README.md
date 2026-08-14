@@ -4,7 +4,7 @@
 
 > ✏️ 如需添加或修改餐厅，请编辑 `food-original.csv` 并提交 Pull Request
 
-📊 共收录 **2** 家餐厅 ｜ 🕒 更新时间：2026-08-14 08:50:32 UTC
+📊 共收录 **2** 家餐厅 ｜ 🕒 更新时间：2026-08-14 08:51:40 UTC
 
 
 <div style="overflow-x: auto;">
@@ -26,7 +26,6 @@
     </tr>
   </thead>
   <tbody>
-
     <tr>
       <td style="min-width: 120px;"><a href="https://surl.amap.com/cyKzztUx8yD">豌豆花开文星店</a></td>
       <td style="min-width: 80px;">川渝口味</td>
@@ -39,9 +38,7 @@
       <td style="min-width: 80px; text-align: center;">⏱ 5-20分钟</td>
       <td style="min-width: 80px;">平价小吃</td>
       <td style="min-width: 150px;">回国必吃</td>
-    </tr>
-
-    <tr>
+    </tr>    <tr>
       <td style="min-width: 120px;"><a href="https://surl.amap.com/22vNFxRE1vv">地锅居（翰林邻里中心店）</a></td>
       <td style="min-width: 80px;">江浙菜</td>
       <td style="min-width: 80px; text-align: center;">¥54</td>
@@ -54,7 +51,6 @@
       <td style="min-width: 80px;">平价小吃</td>
       <td style="min-width: 150px;">必点地锅鸡</td>
     </tr>
-
   </tbody>
 </table>
 
