@@ -1,2 +1,3 @@
 name,cuisine,price,rating,url,hours,contact,reservation_needed,queue_time,tags,notes
 示例餐厅,本地苏帮菜,¥50-100,4.5,https://example.com,周一-周日 11:00-21:00,0512-12345678,否,10-20分钟,平价小吃,示例条目：这是一个用来展示 CSV 格式的示例行。
+豌豆花开文星店,川渝口味,¥19-30,5.0,https://surl.amap.com/cyKzztUx8yD,周一-周日 8:00-22:00,0512-62817117 18068448817,否,5-20分钟,平价小吃,回国必吃的川渝 特别推荐凉面 店主还会主动送小料 就在独墅湖大学城西浦附近
