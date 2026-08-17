@@ -4,7 +4,7 @@
 
 > ✏️ 如需添加或修改餐厅，请编辑 `food-original.csv` 并提交 Pull Request
 
-📊 共收录 **9** 家餐厅 ｜ 🕒 更新于·北京时间：2026-08-17 15:49:18 CST
+📊 共收录 **12** 家餐厅 ｜ 🕒 更新于·北京时间：2026-08-17 15:56:27 CST
 
 ## 📋 餐厅列表
 
@@ -13,11 +13,14 @@
 | [豌豆花开文星店](https://surl.amap.com/cyKzztUx8yD) | 川渝口味 | ¥19-30 | ★★★★★ 5.0 | 周一-周日 8:00-22:00 | ❌ | 平价小吃 |
 | [小海鲜大排档](https://surl.amap.com/ds0meG211gIQ) | 海鲜 | ¥100-150 | ★★★★★ 4.8 | 4:30-2:00 | ❌ | 海鲜餐厅 |
 | [文缘夜市](https://surl.amap.com/bRYe8FYGfEX) | 夜市 | ¥19/人 | ★★★★★ 4.7 | 20:00-4:00 | ❌ | 夜市小吃 |
+| [十三朝手擀爆肚面](https://surl.amap.com/5PQXkiS1A4OA) | 西安面 | ¥20/人 | ★★★★★ 4.7 | 10:30-21:00 | ❌ | 平价小吃 |
+| [大铭油边王](https://surl.amap.com/dvvDAse1d5g7) | 烧烤 | ¥74/人 | ★★★★★ 4.7 | 17:30-1:00 | ❌ | 烧烤 |
 | [地锅居（翰林邻里中心店）](https://surl.amap.com/22vNFxRE1vv) | 江浙菜 | ¥54 | ★★★★★ 4.6 | 周五 11:00-14:00<br>16:30-21:30<br>周六-周日 11:00-14:30<br>16:00-21:30<br>周三-周四 11:00-14:00<br>16:00-21:30 | ❌ | 平价小吃 |
 | [阿泰藏书羊肉•小龙虾•烧烤](https://surl.amap.com/dwB9pJA137hU) | 烧烤 | ¥50-100 | ★★★★★ 4.6 | 10:00-2:00 | ❌ | 烧烤 |
 | [文景夜市](https://surl.amap.com/dM93aF8sbnb) | 夜市 | ¥10-30 | ★★★★★ 4.6 | 16:00-22:00 | ❌ | 夜市小吃 |
 | [食在湘概念湘菜](https://surl.amap.com/bkqkGmSDahG) | 湘菜 | ¥55/人 | ★★★★★ 4.6 | 10:00-22:00 | ❌ | 平价小吃 |
 | [孚味浅草日本料理(翰林店)](https://surl.amap.com/diB7zem1s1zk) | 日本料理 | ¥77/人 | ★★★★★ 4.6 | 9:00-14:00<br>16:00-21:00 | ❌ | 日本料理 |
+| [狗喜头鱼头](https://surl.amap.com/dpsHtlItfzC) | 中餐 | ¥83/人 | ★★★★☆ 4.5 | 11:00-14:00<br>17:00-22:30 | ❌ | 中餐 |
 | [重庆鸡公煲川味烤鱼(文荟广场店)](https://surl.amap.com/dA53Avc17gLt) | 火锅鸡 | ¥42/人 | ★★★★☆ 4.1 | 9:30-23:30 | ❌ | 火锅鸡 |
 
 <details>
@@ -28,11 +31,14 @@
 | [豌豆花开文星店](https://surl.amap.com/cyKzztUx8yD) | 0512-62817117 18068448817 | https://surl.amap.com/cyKzztUx8yD | ⏱ 5-20分钟 | 回国必吃 推荐凉面 |
 | [小海鲜大排档](https://surl.amap.com/ds0meG211gIQ) | 15784506296 | https://surl.amap.com/ds0meG211gIQ | ⏱ 15-30分钟 | 椒盐皮皮虾 |
 | [文缘夜市](https://surl.amap.com/bRYe8FYGfEX) | NULL | https://surl.amap.com/bRYe8FYGfEX | ⏱ 15-15分钟 | 夜市美食 |
+| [十三朝手擀爆肚面](https://surl.amap.com/5PQXkiS1A4OA) | 13584888317 | https://surl.amap.com/5PQXkiS1A4OA | ⏱ 5-20分钟 | 爆肚面 |
+| [大铭油边王](https://surl.amap.com/dvvDAse1d5g7) | NULL | https://surl.amap.com/dvvDAse1d5g7 | ⏱ 5-10分钟 | 油边 凉面 |
 | [地锅居（翰林邻里中心店）](https://surl.amap.com/22vNFxRE1vv) | 18952405766 | https://surl.amap.com/22vNFxRE1vv | ⏱ 5-20分钟 | 必点地锅鸡 |
 | [阿泰藏书羊肉•小龙虾•烧烤](https://surl.amap.com/dwB9pJA137hU) | 17201997254 | https://surl.amap.com/dwB9pJA137hU | ⏱ 5-10分钟 | 羊肉串 小龙虾🦞建议团购 |
 | [文景夜市](https://surl.amap.com/dM93aF8sbnb) | NULL | https://surl.amap.com/dM93aF8sbnb | ⏱ 15-15分钟 | 夜市美食 |
 | [食在湘概念湘菜](https://surl.amap.com/bkqkGmSDahG) | 17895067596 | https://surl.amap.com/bkqkGmSDahG | ⏱ 10-20分钟 | 剁椒鱼头 |
 | [孚味浅草日本料理(翰林店)](https://surl.amap.com/diB7zem1s1zk) | 17201945627 | https://surl.amap.com/diB7zem1s1zk | ⏱ 10-20分钟 | 三文鱼手握🍣和香芒鹅肝 |
+| [狗喜头鱼头](https://surl.amap.com/dpsHtlItfzC) | 15784506296 | https://surl.amap.com/dpsHtlItfzC | ⏱ 10-20分钟 | 红烧鱼头 |
 | [重庆鸡公煲川味烤鱼(文荟广场店)](https://surl.amap.com/dA53Avc17gLt) | 15784601495 | https://surl.amap.com/dA53Avc17gLt | ⏱ 5-20分钟 | 鸡公煲 |
 
 </details>
