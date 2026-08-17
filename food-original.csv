@@ -9,3 +9,6 @@ name,cuisine,price,rating,url,hours,contact,reservation_needed,queue_time,tags,n
 文缘夜市,夜市,¥19/人,4.7,https://surl.amap.com/bRYe8FYGfEX,20:00-4:00,NULL,否,15-15分钟,夜市小吃,夜市美食
 食在湘概念湘菜,湘菜,¥55/人,4.6,https://surl.amap.com/bkqkGmSDahG,10:00-22:00,17895067596,否,10-20分钟,平价小吃,剁椒鱼头
 孚味浅草日本料理(翰林店),日本料理,¥77/人,4.6,https://surl.amap.com/diB7zem1s1zk,9:00-14:00;16:00-21:00,17201945627,否,10-20分钟,日本料理,三文鱼手握🍣和香芒鹅肝
+狗喜头鱼头,中餐,¥83/人,4.5,https://surl.amap.com/dpsHtlItfzC,11:00-14:00;17:00-22:30,15784506296,否,10-20分钟,中餐,红烧鱼头
+十三朝手擀爆肚面,西安面,¥20/人,4.7,https://surl.amap.com/5PQXkiS1A4OA,10:30-21:00,13584888317,否,5-20分钟,平价小吃,爆肚面
+大铭油边王,烧烤,¥74/人,4.7,https://surl.amap.com/dvvDAse1d5g7,17:30-1:00,NULL,否,5-10分钟,烧烤,油边 凉面
