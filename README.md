@@ -4,7 +4,7 @@
 
 > ✏️ 如需添加或修改餐厅，请编辑 `food-original.csv` 并提交 Pull Request
 
-📊 共收录 **8** 家餐厅 ｜ 🕒 更新时间：2026-08-17 00:55:46 UTC
+📊 共收录 **8** 家餐厅 ｜ 🕒 更新时间：2026-08-17 00:57:07 UTC
 
 ## 📋 餐厅列表
 
@@ -16,7 +16,7 @@
 | [地锅居（翰林邻里中心店）](https://surl.amap.com/22vNFxRE1vv) | 江浙菜 | ¥54 | ★★★★★ 4.6 | 周五 11:00-14:00<br>16:30-21:30<br>周六-周日 11:00-14:30<br>16:00-21:30<br>周三-周四 11:00-14:00<br>16:00-21:30 | ❌ | 平价小吃 |
 | [阿泰藏书羊肉•小龙虾•烧烤](https://surl.amap.com/dwB9pJA137hU) | 烧烤 | ¥50-100 | ★★★★★ 4.6 | 10:00-2:00 | ❌ | 烧烤 |
 | [文景夜市](https://surl.amap.com/dM93aF8sbnb) | 夜市 | ¥10-30 | ★★★★★ 4.6 | 16:00-22:00 | ❌ | 夜市小吃 |
-| [食在湘概念湘菜](https://surl.amap.com/bkqkGmSDahG) | 湘菜 | ¥55/人 | ★★★★★ 4.6 | 10:00-22:00 | ❌ | 10-20分钟 |
+| [食在湘概念湘菜](https://surl.amap.com/bkqkGmSDahG) | 湘菜 | ¥55/人 | ★★★★★ 4.6 | 10:00-22:00 | ❌ | 平价小吃 |
 | [重庆鸡公煲川味烤鱼(文荟广场店)](https://surl.amap.com/dA53Avc17gLt) | 火锅鸡 | ¥42/人 | ★★★★☆ 4.1 | 9:30-23:30 | ❌ | 火锅鸡 |
 
 <details>
@@ -30,7 +30,7 @@
 | [地锅居（翰林邻里中心店）](https://surl.amap.com/22vNFxRE1vv) | 18952405766 | https://surl.amap.com/22vNFxRE1vv | ⏱ 5-20分钟 | 必点地锅鸡 |
 | [阿泰藏书羊肉•小龙虾•烧烤](https://surl.amap.com/dwB9pJA137hU) | 17201997254 | https://surl.amap.com/dwB9pJA137hU | ⏱ 5-10分钟 | 羊肉串 小龙虾🦞建议团购 |
 | [文景夜市](https://surl.amap.com/dM93aF8sbnb) | NULL | https://surl.amap.com/dM93aF8sbnb | ⏱ 15-15分钟 | 夜市美食 |
-| [食在湘概念湘菜](https://surl.amap.com/bkqkGmSDahG) | NULL | https://surl.amap.com/bkqkGmSDahG | ⏱ 否 | 平价小吃 |
+| [食在湘概念湘菜](https://surl.amap.com/bkqkGmSDahG) | 17895067596 | https://surl.amap.com/bkqkGmSDahG | ⏱ 10-20分钟 | 剁椒鱼头 |
 | [重庆鸡公煲川味烤鱼(文荟广场店)](https://surl.amap.com/dA53Avc17gLt) | 15784601495 | https://surl.amap.com/dA53Avc17gLt | ⏱ 5-20分钟 | 鸡公煲 |
 
 </details>
