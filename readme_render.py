@@ -70,7 +70,8 @@ lines = []
 lines.append("# 🍜 苏州美食推荐\n\n")
 lines.append("> 📋 本文件由 `readme_render.py` 根据 `food-original.csv` 自动生成\n\n")
 lines.append("> ✏️ 如需添加或修改餐厅，请编辑 `food-original.csv` 并提交 Pull Request\n\n")
-lines.append(f"📊 共收录 **{len(rows)}** 家餐厅 ｜ 🕒 更新时间：{datetime.datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S')} UTC\n\n")
+beijing_time = datetime.datetime.utcnow() + datetime.timedelta(hours=8)
+lines.append(f"📊 共收录 **{len(rows)}** 家餐厅 ｜ 🕒 更新时间：{beijing_time.strftime('%Y-%m-%d %H:%M:%S')} CST\n\n")
 
 # ========== 核心表格（精简为7列，减少横向压缩） ==========
 lines.append("## 📋 餐厅列表\n\n")
