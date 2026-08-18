@@ -4,7 +4,7 @@
 
 > ✏️ 如需添加或修改餐厅，请编辑 `food-original.csv` 并提交 Pull Request
 
-📊 共收录 **13** 家餐厅 ｜ 🕒 更新于·北京时间：2026-08-18 16:50:11 CST
+📊 共收录 **14** 家餐厅 ｜ 🕒 更新于·北京时间：2026-08-18 16:52:53 CST
 
 ## 📋 餐厅列表
 
@@ -21,6 +21,7 @@
 | [文景夜市](https://surl.amap.com/dM93aF8sbnb) | 夜市 | ¥10-30 | ★★★★★ 4.6 | 16:00-22:00 | ❌ | 夜市小吃 |
 | [食在湘概念湘菜](https://surl.amap.com/bkqkGmSDahG) | 湘菜 | ¥55/人 | ★★★★★ 4.6 | 10:00-22:00 | ❌ | 平价小吃 |
 | [孚味浅草日本料理(翰林店)](https://surl.amap.com/diB7zem1s1zk) | 日本料理 | ¥77/人 | ★★★★★ 4.6 | 9:00-14:00<br>16:00-21:00 | ❌ | 日本料理 |
+| [山中无老虎·鱼蛙火锅(尹山湖店)](https://surl.amap.com/f1RdivMzcdn) | 火锅 | ¥71/人 | ★★★★★ 4.6 | 10:30-13:30<br>16:30-24:00 | ❌ | 火锅 |
 | [狗喜头鱼头](https://surl.amap.com/dpsHtlItfzC) | 中餐 | ¥83/人 | ★★★★☆ 4.5 | 11:00-14:00<br>17:00-22:30 | ❌ | 中餐 |
 | [重庆鸡公煲川味烤鱼(文荟广场店)](https://surl.amap.com/dA53Avc17gLt) | 火锅鸡 | ¥42/人 | ★★★★☆ 4.1 | 9:30-23:30 | ❌ | 火锅鸡 |
 
@@ -40,6 +41,7 @@
 | [文景夜市](https://surl.amap.com/dM93aF8sbnb) | NULL | https://surl.amap.com/dM93aF8sbnb | ⏱ 15-15分钟 | 夜市美食 |
 | [食在湘概念湘菜](https://surl.amap.com/bkqkGmSDahG) | 17895067596 | https://surl.amap.com/bkqkGmSDahG | ⏱ 10-20分钟 | 剁椒鱼头 |
 | [孚味浅草日本料理(翰林店)](https://surl.amap.com/diB7zem1s1zk) | 17201945627 | https://surl.amap.com/diB7zem1s1zk | ⏱ 10-20分钟 | 三文鱼手握🍣和香芒鹅肝 |
+| [山中无老虎·鱼蛙火锅(尹山湖店)](https://surl.amap.com/f1RdivMzcdn) | 1780441270 | https://surl.amap.com/f1RdivMzcdn | ⏱ 5-20分钟 | 鱼蛙火锅 |
 | [狗喜头鱼头](https://surl.amap.com/dpsHtlItfzC) | 15784506296 | https://surl.amap.com/dpsHtlItfzC | ⏱ 10-20分钟 | 红烧鱼头 |
 | [重庆鸡公煲川味烤鱼(文荟广场店)](https://surl.amap.com/dA53Avc17gLt) | 15784601495 | https://surl.amap.com/dA53Avc17gLt | ⏱ 5-20分钟 | 鸡公煲 |
 
