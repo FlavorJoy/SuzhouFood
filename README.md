@@ -4,7 +4,7 @@
 
 > ✏️ 如需添加或修改餐厅，请编辑 `food-original.csv` 并提交 Pull Request
 
-📊 共收录 **15** 家餐厅 ｜ 🕒 更新于·北京时间：2026-08-18 16:56:13 CST
+📊 共收录 **16** 家餐厅 ｜ 🕒 更新于·北京时间：2026-08-18 16:59:01 CST
 
 ## 📋 餐厅列表
 
@@ -17,6 +17,7 @@
 | [大铭油边王](https://surl.amap.com/dvvDAse1d5g7) | 烧烤 | ¥74/人 | ★★★★★ 4.7 | 17:30-1:00 | ❌ | 烧烤 |
 | [金山小馆(中海双湾花园店)](https://surl.amap.com/g1JkCFUi6aG) | 中餐 | ¥78/人 | ★★★★★ 4.7 | 24h营业 | ❌ | 中餐 |
 | [小天同学炭火厨房](https://surl.amap.com/hC5rtcq1j6GE) | 日式烧鸟 | ¥80/人 | ★★★★★ 4.7 | 17:00-01:00 | ❌ | 日式烧鸟 |
+| [李呱呱重庆火锅(尹山湖店)](https://surl.amap.com/fby0nNE1obGR) | 重庆火锅 | ¥99/人 | ★★★★★ 4.7 | 11:00-14:00<br>16:00-2:00 | ❌ | 火锅 |
 | [地锅居（翰林邻里中心店）](https://surl.amap.com/22vNFxRE1vv) | 江浙菜 | ¥54 | ★★★★★ 4.6 | 周五 11:00-14:00<br>16:30-21:30<br>周六-周日 11:00-14:30<br>16:00-21:30<br>周三-周四 11:00-14:00<br>16:00-21:30 | ❌ | 平价小吃 |
 | [阿泰藏书羊肉•小龙虾•烧烤](https://surl.amap.com/dwB9pJA137hU) | 烧烤 | ¥50-100 | ★★★★★ 4.6 | 10:00-2:00 | ❌ | 烧烤 |
 | [文景夜市](https://surl.amap.com/dM93aF8sbnb) | 夜市 | ¥10-30 | ★★★★★ 4.6 | 16:00-22:00 | ❌ | 夜市小吃 |
@@ -38,6 +39,7 @@
 | [大铭油边王](https://surl.amap.com/dvvDAse1d5g7) | NULL | https://surl.amap.com/dvvDAse1d5g7 | ⏱ 5-10分钟 | 油边 凉面 |
 | [金山小馆(中海双湾花园店)](https://surl.amap.com/g1JkCFUi6aG) | 17201996948 | https://surl.amap.com/g1JkCFUi6aG | ⏱ 10-20分钟 | 特色烤鱼 招牌牛蛙 麻辣猪蹄锅 |
 | [小天同学炭火厨房](https://surl.amap.com/hC5rtcq1j6GE) | 15784509383 | https://surl.amap.com/hC5rtcq1j6GE | ⏱ 5-20分钟 | 和牛泡菜锅 |
+| [李呱呱重庆火锅(尹山湖店)](https://surl.amap.com/fby0nNE1obGR) | 13063738919 | https://surl.amap.com/fby0nNE1obGR | ⏱ 5-20分钟 | 重庆火锅 |
 | [地锅居（翰林邻里中心店）](https://surl.amap.com/22vNFxRE1vv) | 18952405766 | https://surl.amap.com/22vNFxRE1vv | ⏱ 5-20分钟 | 必点地锅鸡 |
 | [阿泰藏书羊肉•小龙虾•烧烤](https://surl.amap.com/dwB9pJA137hU) | 17201997254 | https://surl.amap.com/dwB9pJA137hU | ⏱ 5-10分钟 | 羊肉串 小龙虾🦞建议团购 |
 | [文景夜市](https://surl.amap.com/dM93aF8sbnb) | NULL | https://surl.amap.com/dM93aF8sbnb | ⏱ 15-15分钟 | 夜市美食 |
