@@ -13,3 +13,4 @@ name,cuisine,price,rating,url,hours,contact,reservation_needed,queue_time,tags,n
 十三朝手擀爆肚面,西安面,¥20/人,4.7,https://surl.amap.com/5PQXkiS1A4OA,10:30-21:00,13584888317,否,5-20分钟,平价小吃,爆肚面
 大铭油边王,烧烤,¥74/人,4.7,https://surl.amap.com/dvvDAse1d5g7,17:30-1:00,NULL,否,5-10分钟,烧烤,油边 凉面
 金山小馆(中海双湾花园店),中餐,¥78/人,4.7,https://surl.amap.com/g1JkCFUi6aG,24h营业,17201996948,否,10-20分钟,中餐,特色烤鱼 招牌牛蛙 麻辣猪蹄锅
+山中无老虎·鱼蛙火锅(尹山湖店),火锅,¥71/人,4.6,https://surl.amap.com/f1RdivMzcdn,10:30-13:30;16:30-24:00,1780441270,否(可订座),5-20分钟,火锅,鱼蛙火锅
