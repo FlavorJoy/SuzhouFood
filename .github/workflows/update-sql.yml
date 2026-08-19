@@ -27,8 +27,11 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+<<<<<<< HEAD
       pull-requests: write
     
+=======
+>>>>>>> ba1177d4387498872fea5ef8389f87b83aa6ef1e
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
