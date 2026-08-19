@@ -1,0 +1,59 @@
+# .github/workflows/update-sql.yml
+name: Update SQL from CSV
+
+# 触发条件：当 food-original.csv、csv 目录或 workflow 文件被修改时执行
+on:
+  push:
+    paths:
+      - 'food-original.csv'
+      - '.github/workflows/update-sql.yml'
+    branches:
+      - main
+  pull_request:
+    paths:
+      - 'food-original.csv'
+    branches:
+      - main
+
+jobs:
+  generate-sql:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        # 需要 checkout 代码 3 次才能支持 git auto-commit
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Cache pip dependencies
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/pip
+          key: pip-${{ runner.os }}-python-${{ steps.setup-python.outputs.python-version }}-${{ hashFiles('requirements.txt') }}
+          restore-keys: |
+            pip-${{ runner.os }}-python-${{ steps.setup-python.outputs.python-version }}-
+            pip-${{ runner.os }}-
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Generate SQL from CSV
+        run: |
+          python scripts/export_to_sql.py
+
+      - name: Commit changes if any
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "[CI] Update data/food.sql from CSV"
+          file_pattern: "data/food.sql"
+          push_options: "--force-with-lease"
+          skip_fetch: true
+
+      - name: Fail if no changes
+        if: steps.git-auto-commit.outputs.was-committed == 'false'
+        run: echo 'No changes in SQL. Exiting.' && exit 0
