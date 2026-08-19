@@ -53,8 +53,6 @@ jobs:
         with:
           commit_message: "[CI] Update data/food.sql from CSV"
           file_pattern: "data/food.sql"
-          push_options: "--force-with-lease"
-          skip_fetch: true
 
       - name: Fail if no changes
         if: steps.git-auto-commit.outputs.was-committed == 'false'
