@@ -19,7 +19,6 @@ on:
     branches:
       - main
       - master
-  # 支持手动触发
   workflow_dispatch:
 
 jobs:
@@ -27,11 +26,8 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
-<<<<<<< HEAD
       pull-requests: write
     
-=======
->>>>>>> ba1177d4387498872fea5ef8389f87b83aa6ef1e
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -143,10 +139,7 @@ jobs:
           skip_checkout: false
 
       - name: Create Pull Request (if on fork)
-        if: |
-          github.event_name == 'push' &&
-          github.repository_owner != 'masqueradeeer' &&
-          steps.changes.outputs.changes == 'true'
+        if: github.event_name == 'push' && github.repository_owner != 'masqueradeeer' && steps.changes.outputs.changes == 'true'
         uses: peter-evans/create-pull-request@v6
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
