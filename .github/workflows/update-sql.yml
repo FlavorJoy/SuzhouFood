@@ -1,7 +1,6 @@
 # .github/workflows/update-sql.yml
 name: Update SQL from CSV
 
-# 触发条件：当 food-original.csv、csv 目录或 workflow 文件被修改时执行
 on:
   push:
     paths:
@@ -29,18 +28,21 @@ jobs:
       pull-requests: write
     
     steps:
+      # 1. 检出代码（使用最新版本）
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v4.2.2
         with:
           fetch-depth: 0
           ref: ${{ github.head_ref || github.ref_name }}
 
+      # 2. 设置 Python（使用最新版本）
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v5.3.0
         with:
           python-version: '3.11'
           cache: 'pip'
 
+      # 3. 安装依赖
       - name: Install dependencies
         run: |
           if [ -f requirements.txt ]; then
@@ -49,6 +51,7 @@ jobs:
             echo "⚠️ requirements.txt not found, skipping pip install"
           fi
 
+      # 4. 调试：列出文件结构
       - name: Debug - List files
         run: |
           echo "Current directory:"
@@ -63,6 +66,7 @@ jobs:
           echo "Data directory:"
           ls -la data/ 2>/dev/null || echo "data/ directory not found"
 
+      # 5. 生成 SQL
       - name: Generate SQL from CSV
         id: generate
         run: |
@@ -104,6 +108,7 @@ jobs:
             exit 1
           fi
 
+      # 6. 检查变更
       - name: Check for changes
         id: changes
         run: |
@@ -121,9 +126,10 @@ jobs:
             echo "changes=false" >> $GITHUB_OUTPUT
           fi
 
+      # 7. 提交变更（使用最新版本）
       - name: Commit changes if any
         if: steps.changes.outputs.changes == 'true'
-        uses: stefanzweifel/git-auto-commit-action@v5
+        uses: stefanzweifel/git-auto-commit-action@v5.0.1
         with:
           commit_message: |
             [CI] Update data/food.sql from CSV
@@ -138,9 +144,10 @@ jobs:
           skip_fetch: true
           skip_checkout: false
 
+      # 8. 创建 Pull Request（如果是 Fork）
       - name: Create Pull Request (if on fork)
         if: github.event_name == 'push' && github.repository_owner != 'masqueradeeer' && steps.changes.outputs.changes == 'true'
-        uses: peter-evans/create-pull-request@v6
+        uses: peter-evans/create-pull-request@v7.0.5
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           commit-message: "[CI] Update data/food.sql from CSV"
@@ -159,14 +166,16 @@ jobs:
           base: ${{ github.head_ref || github.ref_name }}
           delete-branch: true
 
+      # 9. 上传 SQL 文件作为 Artifact
       - name: Upload SQL artifact
         if: steps.changes.outputs.changes == 'true'
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v4.4.3
         with:
           name: food-sql
           path: data/food.sql
           retention-days: 7
 
+      # 10. 成功消息
       - name: Success message
         if: steps.changes.outputs.changes == 'true'
         run: |
