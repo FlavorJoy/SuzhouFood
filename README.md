@@ -4,7 +4,7 @@
 
 > ✏️ 如需添加或修改餐厅，请编辑 `food-original.csv` 并提交 Pull Request
 
-📊 共收录 **17** 家餐厅 ｜ 🕒 更新于·北京时间：2026-08-19 14:35:28 CST
+📊 共收录 **17** 家餐厅 ｜ 🕒 更新于·北京时间：2026-08-19 14:37:29 CST
 
 ## 📋 餐厅列表
 
@@ -25,8 +25,8 @@
 | [山中无老虎·鱼蛙火锅(尹山湖店)](https://surl.amap.com/f1RdivMzcdn) | 火锅 | ¥71/人 | ★★★★★ 4.6 | 10:30-13:30<br>16:30-24:00 | ❌ | 火锅 |
 | [狗喜头鱼头](https://surl.amap.com/dpsHtlItfzC) | 中餐 | ¥83/人 | ★★★★☆ 4.5 | 11:00-14:00<br>17:00-22:30 | ❌ | 中餐 |
 | [李呱呱重庆火锅(尹山湖店)](https://surl.amap.com/fby0nNE1obGR) | 重庆火锅 | ¥99/人 | ★★★★☆ 4.5 | 11:00-14:00<br>16:00-2:00 | ❌ | 火锅 |
+| [噶闹棒铁锅豆花牛肉](https://surl.amap.com/bR4aG5o1m7Bd) | 豆花/豆腐脑 | ¥82/人 | ★★★★☆ 4.5 | 10:00-14:00<br>16:30-24:00 | ❌ | 豆花/豆腐脑 |
 | [重庆鸡公煲川味烤鱼(文荟广场店)](https://surl.amap.com/dA53Avc17gLt) | 火锅鸡 | ¥42/人 | ★★★★☆ 4.1 | 9:30-23:30 | ❌ | 火锅鸡 |
-| [噶闹棒铁锅豆花牛肉](10:00-14:00;16:30-24:00) | 豆花/豆腐脑 | ¥82/人· | — | 15151659564 | ❌ | 铁锅豆花牛肉 |
 
 <details>
 <summary>📖 点击展开详细信息（联系方式、地址、排队、备注）</summary>
@@ -48,8 +48,8 @@
 | [山中无老虎·鱼蛙火锅(尹山湖店)](https://surl.amap.com/f1RdivMzcdn) | 1780441270 | https://surl.amap.com/f1RdivMzcdn | ⏱ 5-20分钟 | 鱼蛙火锅 |
 | [狗喜头鱼头](https://surl.amap.com/dpsHtlItfzC) | 15784506296 | https://surl.amap.com/dpsHtlItfzC | ⏱ 10-20分钟 | 红烧鱼头 |
 | [李呱呱重庆火锅(尹山湖店)](https://surl.amap.com/fby0nNE1obGR) | 13063738919 | https://surl.amap.com/fby0nNE1obGR | ⏱ 5-20分钟 | 重庆火锅 |
+| [噶闹棒铁锅豆花牛肉](https://surl.amap.com/bR4aG5o1m7Bd) | 15151659564 | https://surl.amap.com/bR4aG5o1m7Bd | ⏱ 5-20分钟 | 铁锅豆花牛肉 |
 | [重庆鸡公煲川味烤鱼(文荟广场店)](https://surl.amap.com/dA53Avc17gLt) | 15784601495 | https://surl.amap.com/dA53Avc17gLt | ⏱ 5-20分钟 | 鸡公煲 |
-| [噶闹棒铁锅豆花牛肉](10:00-14:00;16:30-24:00) | 否 | 10:00-14:00;16:30-24:00 | ⏱ 豆花/豆腐脑 |  |
 
 </details>
 
