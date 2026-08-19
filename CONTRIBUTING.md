@@ -10,4 +10,6 @@
 4. 提交新分支并打开 PR。
 5. PR 被合并到默认分支（main/master）后，GitHub Actions 会自动运行 `readme_render.py` 并提交生成的 `README.md`。
 
-本仓库使用 CSV 做单一数据源，README 为自动生成产物，请确保 CSV 的字段顺序和列名不被更改。
+> **附加说明**：在 PR 合并后，自动化脚本 `export_to_sql.py` 亦会执行，将 `food-original.csv` 转换为 `data/food.sql`。此 SQL 文件包含 `suzhou_food` 表的 INSERT 语句，可直接用于创建数据库或备份。
+
+本仓库使用 CSV 做单一数据源，README 与 SQL 为自动生成产物，请确保 CSV 的字段顺序和列名不被更改。
