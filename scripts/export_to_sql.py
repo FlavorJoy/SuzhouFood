@@ -14,10 +14,11 @@ SQL_PATH = os.getenv('SQL_PATH', 'data/food.sql')
 
 def escape_sql_value(val):
     """Escape SQL string values"""
-    if val is None or str(val).strip() == '' ::
+    if val is None or str(val).strip() == '':
         return 'NULL'
     val = str(val)
-    escaped = val.replace('\\', '\\\\').replace("'", "''"); return "'" + escaped + "'"
+    escaped = val.replace('\\', '\\\\').replace("'", "''")
+    return f"'{escaped}'"
 
 def main():
     print(f"Reading CSV: {CSV_PATH}")
