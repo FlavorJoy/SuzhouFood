@@ -6,54 +6,174 @@ on:
   push:
     paths:
       - 'food-original.csv'
+      - 'data/*.csv'
       - '.github/workflows/update-sql.yml'
+      - 'scripts/export_to_sql.py'
     branches:
       - main
+      - master
   pull_request:
     paths:
       - 'food-original.csv'
+      - 'data/*.csv'
     branches:
       - main
+      - master
+  # 支持手动触发
+  workflow_dispatch:
 
 jobs:
   generate-sql:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
-        # 需要 checkout 代码 3 次才能支持 git auto-commit
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          ref: ${{ github.head_ref || github.ref_name }}
 
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-
-      - name: Cache pip dependencies
-        uses: actions/cache@v4
-        with:
-          path: ~/.cache/pip
-          key: pip-${{ runner.os }}-python-${{ steps.setup-python.outputs.python-version }}-${{ hashFiles('requirements.txt') }}
-          restore-keys: |
-            pip-${{ runner.os }}-python-${{ steps.setup-python.outputs.python-version }}-
-            pip-${{ runner.os }}-
+          cache: 'pip'
 
       - name: Install dependencies
-        run: pip install -r requirements.txt
+        run: |
+          if [ -f requirements.txt ]; then
+            pip install -r requirements.txt
+          else
+            echo "⚠️ requirements.txt not found, skipping pip install"
+          fi
+
+      - name: Debug - List files
+        run: |
+          echo "Current directory:"
+          ls -la
+          echo ""
+          echo "Scripts directory:"
+          ls -la scripts/ 2>/dev/null || echo "scripts/ directory not found"
+          echo ""
+          echo "CSV files:"
+          ls -la *.csv 2>/dev/null || echo "No CSV files in root"
+          echo ""
+          echo "Data directory:"
+          ls -la data/ 2>/dev/null || echo "data/ directory not found"
 
       - name: Generate SQL from CSV
+        id: generate
         run: |
+          # 检查脚本是否存在
+          if [ ! -f "scripts/export_to_sql.py" ]; then
+            echo "❌ scripts/export_to_sql.py not found!"
+            exit 1
+          fi
+          
+          # 检查 CSV 文件是否存在
+          if [ ! -f "food-original.csv" ] && [ ! -f "data/food.csv" ]; then
+            echo "❌ No CSV file found!"
+            echo "Available files:"
+            find . -name "*.csv" -type f
+            exit 1
+          fi
+          
+          # 设置环境变量
+          export CSV_PATH="${CSV_PATH:-food-original.csv}"
+          export SQL_PATH="${SQL_PATH:-data/food.sql}"
+          
+          echo "Using CSV_PATH: $CSV_PATH"
+          echo "Using SQL_PATH: $SQL_PATH"
+          
+          # 创建数据目录
+          mkdir -p data
+          
+          # 运行脚本
           python scripts/export_to_sql.py
+          
+          # 检查是否生成了 SQL 文件
+          if [ -f "data/food.sql" ]; then
+            echo "✅ SQL file generated successfully"
+            echo "generated=true" >> $GITHUB_OUTPUT
+            echo "SQL file size: $(wc -l < data/food.sql) lines"
+          else
+            echo "❌ Failed to generate SQL file"
+            echo "generated=false" >> $GITHUB_OUTPUT
+            exit 1
+          fi
+
+      - name: Check for changes
+        id: changes
+        run: |
+          if [ -f "data/food.sql" ]; then
+            # 检查是否有变更
+            if git diff --quiet data/food.sql; then
+              echo "changes=false" >> $GITHUB_OUTPUT
+              echo "ℹ️ No changes in SQL file"
+            else
+              echo "changes=true" >> $GITHUB_OUTPUT
+              echo "✅ Changes detected in SQL file"
+              git diff --stat data/food.sql
+            fi
+          else
+            echo "changes=false" >> $GITHUB_OUTPUT
+          fi
 
       - name: Commit changes if any
+        if: steps.changes.outputs.changes == 'true'
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: "[CI] Update data/food.sql from CSV"
+          commit_message: |
+            [CI] Update data/food.sql from CSV
+            
+            - Generated from ${{ env.CSV_PATH || 'food-original.csv' }}
+            - Auto-committed by GitHub Actions
+          commit_user_name: GitHub Actions Bot
+          commit_user_email: actions@github.com
+          commit_author: GitHub Actions <actions@github.com>
           file_pattern: "data/food.sql"
           push_options: "--force-with-lease"
           skip_fetch: true
+          skip_checkout: false
 
-      - name: Fail if no changes
-        if: steps.git-auto-commit.outputs.was-committed == 'false'
-        run: echo 'No changes in SQL. Exiting.' && exit 0
+      - name: Create Pull Request (if on fork)
+        if: |
+          github.event_name == 'push' &&
+          github.repository_owner != 'masqueradeeer' &&
+          steps.changes.outputs.changes == 'true'
+        uses: peter-evans/create-pull-request@v6
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: "[CI] Update data/food.sql from CSV"
+          title: "chore: update food.sql from CSV"
+          body: |
+            ## 📊 SQL Update
+            
+            This PR updates `data/food.sql` with the latest data from `food-original.csv`.
+            
+            ### Changes
+            - Updated SQL file with new/updated restaurant data
+            - Auto-generated by GitHub Actions
+            
+            Please review the changes before merging.
+          branch: "ci/update-sql-${{ github.run_number }}"
+          base: ${{ github.head_ref || github.ref_name }}
+          delete-branch: true
+
+      - name: Upload SQL artifact
+        if: steps.changes.outputs.changes == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: food-sql
+          path: data/food.sql
+          retention-days: 7
+
+      - name: Success message
+        if: steps.changes.outputs.changes == 'true'
+        run: |
+          echo "✅ SQL file updated successfully!"
+          echo "📁 File: data/food.sql"
+          echo "📊 Records: $(grep -c 'INSERT INTO' data/food.sql || echo '0')"
