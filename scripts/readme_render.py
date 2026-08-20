@@ -52,7 +52,7 @@ def format_hours(hours):
 
 
 if not os.path.exists(CSV_PATH):
-    print(f"ERROR: {CSV_PATH} not found.", file=sys.stderr)
+    print(f"❌ ERROR: {CSV_PATH} not found.", file=sys.stderr)
     sys.exit(1)
 
 rows = []
