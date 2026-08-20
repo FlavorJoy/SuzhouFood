@@ -1,2 +1,8 @@
-# 忽略生成的 SQL 文件
-/data/*.sql
+# macOS
+.DS_Store
+
+# IDEA 配置（全部忽略）
+.idea/
+
+# 模块文件
+*.iml
