@@ -1,8 +1,34 @@
-# macOS
+# 1. 系统文件
 .DS_Store
+*.swp
+*.swo
 
-# IDEA 配置（全部忽略）
+# 2. Python 虚拟环境
+.venv/
+*.pyc
+__pycache__/
+
+# 3. Node.js 依赖
+node_modules/
+
+# 4. 依赖仓库（如 composer、go modules）
+vendor/
+
+# 5. 构建产物
+build/
+dist/
+tmp/
+out/
+
+# 6. 开发工具/IDE 路径
+.vscode/
 .idea/
+*.sublime-project
+*.sublime-workspace
 
-# 模块文件
-*.iml
+# 7. 日志与临时文件
+*.log
+*.tmp
+
+# 8. 环境变量文件
+.env
