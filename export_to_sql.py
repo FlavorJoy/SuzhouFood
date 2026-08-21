@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 """
 CSV to SQL Converter - 生成完整的MySQL数据库安装脚本
 读取CSV文件，生成包含数据库创建、表结构、数据导入的完整SQL脚本
@@ -24,7 +25,7 @@ TABLE_NAME = os.getenv('TABLE_NAME', 'suzhou_food')
 
 def escape_sql_value(val):
     """转义SQL字符串值"""
-    if val is None or str(val).strip() == '':
+    if val is None or str(val).strip() == '' or str(val).strip().upper() == 'NULL':
         return 'NULL'
     val = str(val)
     # 处理特殊字符
@@ -43,17 +44,13 @@ def detect_column_type(column_name, sample_values):
         return 'DECIMAL(3,2) DEFAULT NULL'
     elif column_name in ['name']:
         return 'VARCHAR(100) NOT NULL'
-    elif column_name in ['cuisine', 'reservation_needed']:
+    elif column_name in ['cuisine']:
         return 'VARCHAR(50) DEFAULT NULL'
-    elif column_name in ['price', 'queue_time']:
+    elif column_name in ['price']:
         return 'VARCHAR(50) DEFAULT NULL'
     elif column_name in ['url']:
         return 'VARCHAR(500) DEFAULT NULL'
     elif column_name in ['hours']:
-        return 'VARCHAR(200) DEFAULT NULL'
-    elif column_name in ['contact']:
-        return 'VARCHAR(100) DEFAULT NULL'
-    elif column_name in ['tags']:
         return 'VARCHAR(200) DEFAULT NULL'
     elif column_name in ['notes']:
         return 'TEXT DEFAULT NULL'
@@ -110,14 +107,6 @@ def generate_create_table_sql(fields, rows):
             comment = '高德地图链接'
         elif field == 'hours':
             comment = '营业时间'
-        elif field == 'contact':
-            comment = '联系电话'
-        elif field == 'reservation_needed':
-            comment = '是否需要预订'
-        elif field == 'queue_time':
-            comment = '排队时间预估'
-        elif field == 'tags':
-            comment = '标签/分类'
         elif field == 'notes':
             comment = '推荐菜品/备注'
 
@@ -137,7 +126,6 @@ def generate_create_table_sql(fields, rows):
     field_defs.append("    INDEX `idx_name` (`name`)")
     field_defs.append("    INDEX `idx_cuisine` (`cuisine`)")
     field_defs.append("    INDEX `idx_rating` (`rating`)")
-    field_defs.append("    INDEX `idx_tags` (`tags`(100))")
 
     lines.append(",\n".join(field_defs))
     lines.append(f") ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='苏州美食推荐表'")
@@ -198,7 +186,7 @@ GROUP BY `cuisine`
 ORDER BY count DESC;
 
 -- 高评分推荐（4.8分以上）
-SELECT `name`, `cuisine`, `rating`, `price`, `tags`, `notes`
+SELECT `name`, `cuisine`, `rating`, `price`, `notes`
 FROM `{TABLE_NAME}`
 WHERE `rating` >= 4.8
 ORDER BY `rating` DESC;
@@ -229,7 +217,7 @@ def generate_views():
 -- 创建高分美食视图
 CREATE OR REPLACE VIEW `v_high_rating_food` AS
 SELECT 
-    `id`, `name`, `cuisine`, `price`, `rating`, `tags`, `notes`
+    `id`, `name`, `cuisine`, `price`, `rating`, `notes`
 FROM `{TABLE_NAME}`
 WHERE `rating` >= 4.5
 ORDER BY `rating` DESC;
@@ -275,21 +263,20 @@ CREATE PROCEDURE `sp_get_food_by_cuisine`(
     IN cuisine_name VARCHAR(50)
 )
 BEGIN
-    SELECT `name`, `price`, `rating`, `tags`, `notes`
+    SELECT `name`, `price`, `rating`, `notes`
     FROM `{TABLE_NAME}`
     WHERE `cuisine` = cuisine_name
     ORDER BY `rating` DESC;
 END //
 
--- 搜索美食（支持名称和标签模糊搜索）
+-- 搜索美食（支持名称和备注模糊搜索）
 CREATE PROCEDURE `sp_search_food`(
     IN keyword VARCHAR(100)
 )
 BEGIN
-    SELECT `name`, `cuisine`, `price`, `rating`, `tags`, `notes`
+    SELECT `name`, `cuisine`, `price`, `rating`, `notes`
     FROM `{TABLE_NAME}`
     WHERE `name` LIKE CONCAT('%', keyword, '%')
-       OR `tags` LIKE CONCAT('%', keyword, '%')
        OR `notes` LIKE CONCAT('%', keyword, '%')
     ORDER BY `rating` DESC;
 END //
@@ -411,11 +398,15 @@ def main():
     # 读取CSV
     fields, rows = read_csv(CSV_PATH)
 
+    # 过滤示例行
+    rows = [r for r in rows if not ("示例" in (r.get('name') or '') or "示例" in (r.get('notes') or ''))]
+
     if not rows:
-        print("⚠️ 警告: CSV文件为空")
+        print("⚠️ 警告: CSV文件为空或只有示例行")
 
     total_count = len(rows)
     print(f"✅ 读取成功: {total_count} 条记录, {len(fields)} 个字段")
+    print(f"📋 字段: {', '.join(fields)}")
 
     # 生成SQL
     write_sql(SQL_PATH, fields, rows, total_count)
