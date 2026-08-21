@@ -26,7 +26,7 @@ jobs:
           python-version: "3.x"
 
       - name: Run renderer
-        run: python scripts/readme_render.py
+        run: python readme_render.py
 
       - name: Commit generated README
         uses: EndBug/add-and-commit@v9

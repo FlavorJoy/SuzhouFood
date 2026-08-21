@@ -9,10 +9,10 @@ help:
 	@echo "  test  – Run tests with pytest."
 
 sql:
-	python scripts/export_to_sql.py
+	python export_to_sql.py
 
 readme:
-	python scripts/readme_render.py
+	python readme_render.py
 
 lint:
 	black --check .
