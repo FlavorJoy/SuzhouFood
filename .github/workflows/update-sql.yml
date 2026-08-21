@@ -7,7 +7,7 @@ on:
       - 'food-original.csv'
       - 'data/*.csv'
       - '.github/workflows/update-sql.yml'
-      - 'scripts/export_to_sql.py'
+      - '../../export_to_sql.py'
     branches:
       - main
       - master
@@ -128,12 +128,16 @@ jobs:
           fi
 
       # 7. 🔧 修复：先拉取远程最新代码，再提交
-      - name: Pull latest changes
+      - name: Pull latest changes with stashing
         if: steps.changes.outputs.changes == 'true'
         run: |
           git config user.name "GitHub Actions Bot"
           git config user.email "actions@github.com"
+          echo "Stashing local changes before pulling"
+          git stash push -m "auto-stash before pull"
           git pull origin ${{ github.head_ref || github.ref_name }} --rebase
+          echo "Restoring stashed changes after rebase"
+          git stash pop || echo "No stash to pop"
 
       # 8. 提交变更（修复：skip_fetch 改为 false）
       - name: Commit changes if any

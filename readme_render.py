@@ -129,7 +129,7 @@ for r in rows:
 
     queue = esc(r.get("queue_time", ""))
     if queue:
-        queue = f"⏱ {queue}"
+        queue = f"{queue}"
     else:
         queue = "—"
 
