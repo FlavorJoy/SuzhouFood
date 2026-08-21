@@ -73,8 +73,8 @@ jobs:
         id: generate
         run: |
           # 检查脚本是否存在
-          if [ ! -f "scripts/export_to_sql.py" ]; then
-            echo "❌ scripts/export_to_sql.py not found!"
+          if [ ! -f "export_to_sql.py" ]; then
+            echo "❌ export_to_sql.py not found!"
             exit 1
           fi
           
@@ -97,7 +97,7 @@ jobs:
           mkdir -p data
           
           # 运行脚本
-          python scripts/export_to_sql.py
+          python export_to_sql.py
           
           # 检查是否生成了 SQL 文件
           if [ -f "data/food.sql" ]; then

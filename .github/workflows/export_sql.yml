@@ -26,7 +26,7 @@ jobs:
 
       - name: Run export script
         run: |
-          python scripts/export_to_sql.py
+          python export_to_sql.py
 
       - name: Commit SQL file
         run: |
