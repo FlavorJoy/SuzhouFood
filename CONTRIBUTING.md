@@ -4,9 +4,9 @@
 
 1. 在仓库根目录打开 `food-original.csv`。
 2. 在文件末尾添加一行，字段按顺序为：
-   name,cuisine,price,rating,url,hours,contact,reservation_needed,queue_time,tags,notes
+   name,cuisine,price,rating,url,hours,notes
 3. 填写示例：
-   示例餐厅,本地苏帮菜,¥50-100,4.5,https://example.com,周一-周日 11:00-21:00,0512-12345678,否,10-20分钟,平价小吃,示例说明
+   示例餐厅,本地苏帮菜,¥50-100,4.5,https://example.com,周一-周日 11:00-21:00,示例说明
 4. 提交新分支并打开 PR。
 5. PR 被合并到默认分支（main/master）后，GitHub Actions 会自动运行 `readme_render.py` 并提交生成的 `README.md`。
 
